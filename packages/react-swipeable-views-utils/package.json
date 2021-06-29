@@ -1,5 +1,8 @@
 {
-  "name": "react-swipeable-views-utils",
+  "name": "@meowtec/react-swipeable-views-utils",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.14.0",
   "description": "react-swipeable-views utility modules",
   "main": "lib/index.js",
@@ -19,7 +22,7 @@
     "keycode": "^2.1.7",
     "prop-types": "^15.6.0",
     "react-event-listener": "^0.6.0",
-    "react-swipeable-views-core": "^0.14.0",
+    "@meowtec/react-swipeable-views-core": "^0.14.0",
     "shallow-equal": "^1.2.1"
   },
   "devDependencies": {
