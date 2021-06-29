@@ -1,5 +1,8 @@
 {
-  "name": "react-swipeable-views-core",
+  "name": "@meowtec/react-swipeable-views-core",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.14.0",
   "description": "react-swipeable-views core modules",
   "main": "lib/index.js",
@@ -8,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/oliviertassinari/react-swipeable-views.git"
+    "url": "https://github.com/meowtec/react-swipeable-views.git"
   },
   "author": "Olivier Tassinari <olivier.tassinari@gmail.com> (https://github.com/oliviertassinari)",
   "bugs": {
-    "url": "https://github.com/oliviertassinari/react-swipeable-views/issues"
+    "url": "https://github.com/meowtec/react-swipeable-views/issues"
   },
   "dependencies": {
     "@babel/runtime": "7.0.0",
