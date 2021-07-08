@@ -366,7 +366,7 @@ class SwipeableViews extends React.Component {
   };
 
   handleSwipeStart = event => {
-    const { axis } = this.props;
+    const { axis, eventMargin } = this.props;
 
     const touch = applyRotationMatrix(event.touches[0], axis);
     const rootStyle = window.getComputedStyle(this.rootNode);
@@ -382,6 +382,25 @@ class SwipeableViews extends React.Component {
     this.startY = touch.pageY;
     this.isSwiping = undefined;
     this.started = true;
+    this.ignoreBoundaryTouchStart = false;
+
+    // ignore swipe if touch start near the boundary
+    if (eventMargin) {
+      const rootNodeRect = this.rootNode.getBoundingClientRect();
+      if (
+        // touch < left
+        rootNodeRect.x + (eventMargin[3] ?? eventMargin[1]) > touch.pageX ||
+        // touch > right
+        rootNodeRect.x + rootNodeRect.width - eventMargin[1] < touch.pageX ||
+        // touch < top
+        rootNodeRect.y + eventMargin[0] > touch.pagey ||
+        // touch > bottom
+        rootNodeRect.y + rootNodeRect.height - (eventMargin[2] ?? eventMargin[0]) < touch.pageY
+      ) {
+        this.ignoreBoundaryTouchStart = true;
+        return;
+      }
+    }
 
     const computedStyle = window.getComputedStyle(this.containerNode);
     const transform =
@@ -407,6 +426,10 @@ class SwipeableViews extends React.Component {
   };
 
   handleSwipeMove = event => {
+    if (this.ignoreBoundaryTouchStart) {
+      return;
+    }
+
     // The touch start event can be cancel.
     // Makes sure we set a starting point.
     if (!this.started) {
@@ -520,6 +543,7 @@ class SwipeableViews extends React.Component {
 
   handleSwipeEnd = () => {
     nodeWhoClaimedTheScroll = null;
+    this.ignoreBoundaryTouchStart = false;
 
     // The touch start event can be cancel.
     // Makes sure that a starting point is set.
