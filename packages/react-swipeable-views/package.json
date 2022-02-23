@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.14.0",
+  "version": "0.14.6",
   "description": "A React component for swipeable views",
   "main": "lib/index.js",
   "scripts": {
@@ -25,9 +25,9 @@
   },
   "dependencies": {
     "@babel/runtime": "7.0.0",
+    "@meowtec/react-swipeable-views-core": "^0.14.6",
+    "@meowtec/react-swipeable-views-utils": "^0.14.6",
     "prop-types": "^15.5.4",
-    "@meowtec/react-swipeable-views-core": "^0.14.0",
-    "@meowtec/react-swipeable-views-utils": "^0.14.0",
     "warning": "^4.0.1"
   },
   "peerDependencies": {
