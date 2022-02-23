@@ -859,6 +859,7 @@ So animateHeight is most likely having no effect at all.`,
 
               return (
                 <div
+                  key={child.key}
                   ref={ref}
                   style={slideStyle}
                   className={slideClassName}
